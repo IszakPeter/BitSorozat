@@ -2,9 +2,10 @@ D:\Code\GitHub\BitSorozat\BiTZ\bin\Debug\BiTZ.exe.config
 D:\Code\GitHub\BitSorozat\BiTZ\bin\Debug\BiTZ.exe
 D:\Code\GitHub\BitSorozat\BiTZ\bin\Debug\BiTZ.pdb
 D:\Code\GitHub\BitSorozat\BiTZ\obj\Debug\BiTZ.csprojAssemblyReference.cache
-D:\Code\GitHub\BitSorozat\BiTZ\obj\Debug\BiTZ.Form1.resources
 D:\Code\GitHub\BitSorozat\BiTZ\obj\Debug\BiTZ.Properties.Resources.resources
 D:\Code\GitHub\BitSorozat\BiTZ\obj\Debug\BiTZ.csproj.GenerateResource.cache
 D:\Code\GitHub\BitSorozat\BiTZ\obj\Debug\BiTZ.csproj.CoreCompileInputs.cache
 D:\Code\GitHub\BitSorozat\BiTZ\obj\Debug\BiTZ.exe
 D:\Code\GitHub\BitSorozat\BiTZ\obj\Debug\BiTZ.pdb
+D:\Code\GitHub\BitSorozat\BiTZ\obj\Debug\BiTZ.Form1.resources
+D:\Code\GitHub\BitSorozat\BiTZ\obj\Debug\BiTZ.DrawingBoard.resources

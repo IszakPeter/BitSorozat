@@ -4,71 +4,61 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media.Imaging;
 
 namespace BiTZ
 {
-    public partial class Form1 : Form
-    {
-        public Form1()
-        {
+    public partial class Form1 : Form {
+        static Random rnd = new Random();
+        //32 bájt lehet
+        public Form1(){
             InitializeComponent();
         }
-        Point lastPoint = Point.Empty;
-        bool isMouseDown = false;
-        byte[] array = null;
-        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
-        {
-            lastPoint = e.Location;
-            isMouseDown = true;
-        }
 
-        private void pictureBox1_MouseMove(object sender, MouseEventArgs e){
-            if (isMouseDown == true){
-                if (lastPoint != null){
-                    if (pictureBox1.Image == null)
-                        pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-                    using (Graphics g = Graphics.FromImage(pictureBox1.Image)){
-                        g.DrawLine(new Pen(Color.Black, 2), lastPoint, e.Location);
-                        g.SmoothingMode = SmoothingMode.AntiAlias;
-                    }
-                    pictureBox1.Invalidate();
-                    lastPoint = e.Location;
-                }
-            }
-        }
-        private void pictureBox1_MouseUp(object sender, MouseEventArgs e) {
-            isMouseDown = false;
-            lastPoint = Point.Empty;// törli a pontot
-        }
-        private void clearButton_Click(object sender, EventArgs e){
-            if (pictureBox1.Image != null){
-                pictureBox1.Image = null;
-                Invalidate();
-            }
-        }
-        public  byte[] ImageToByte(Image img){
-            ImageConverter converter = new ImageConverter();
-            return (byte[])converter.ConvertTo(img, typeof(byte[]));
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+        /*
+        public static byte[] converterDemo(Image x)
         {
-            array= ImageToByte((Image)pictureBox1.Image);
-            array = "255;0;255;255;0;255".Split(';').Select(_ => byte.Parse(_)).ToArray();
-            MessageBox.Show(string.Join(" ", array));
+            ImageConverter _imageConverter = new ImageConverter();
+            byte[] xByte = (byte[])_imageConverter.ConvertTo(x, typeof(byte[]));
+            return xByte;
         }
-
-        private void button3_Click(object sender, EventArgs e)
+        private Bitmap GenBitmap(int width, int height) {
+            int ch =3; 
+            Random rnd = new Random();
+            int imageByteSize = width * height * ch;
+            byte[] imageData = new byte[imageByteSize]; 
+            rnd.NextBytes(imageData);       
+            imageData = imageData.OrderByDescending(_ => _).ToArray();
+            Bitmap bitmap = new Bitmap(width, height, PixelFormat.Format24bppRgb);
+            BitmapData bmData = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadWrite, bitmap.PixelFormat);
+            IntPtr pNative = bmData.Scan0;
+            Marshal.Copy(imageData, 0, pNative, imageByteSize);
+            bitmap.UnlockBits(bmData);
+            return bitmap;
+        }
+        */
+        private DrawingBoard board = null;
+        private void test_Click(object sender, EventArgs e)
         {
-            using (MemoryStream mStream = new MemoryStream(array))
-            {
-                pictureBox1.Image= Image.FromStream(mStream);
-            }
+            string c = string.Join("",
+                Enumerable.Range(0, 256).Select(_=> rnd.Next(2)));
+            //            board.BitsToDraw(c);   
+            var t = c.Select((_, i) => _ + "  " + i);
+            MessageBox.Show(string.Join("\r\n", t));
+            MessageBox.Show(board.DrawToBits());
         }
+        private void Form1_Load(object sender, EventArgs e){
+           board= new DrawingBoard(10,16);
+            panel1.Controls.Add(board);
+            
+        }
+       
     }
 }
