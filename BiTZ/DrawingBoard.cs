@@ -11,7 +11,7 @@ namespace BiTZ
         private int pixelSize;
         private int pixelDensity;
         private List<Label> pixels=new List<Label>();
-        public  Color penColor=Color.Black;
+        public  Color penColor=Color.Red;
         
         public DrawingBoard(int ps,int pd) {
             InitializeComponent();
@@ -28,18 +28,18 @@ namespace BiTZ
         public void BitsToDraw(string bs)
         {
            bs= bs.PadRight(pixelDensity * pixelDensity,'0');
-            MessageBox.Show(bs);
                 for (int i = 0; i < bs.Length; i++)
-                    pixels[i].BackColor = bs[i] == '1' ? Color.Black : Color.White;
+                    pixels[i].BackColor = bs[i] == '1' ? penColor : Color.White;
         }
 
        public string DrawToBits() =>
-            string.Join("", pixels.Select(_ => _.BackColor == Color.Black ? "1" : "0"));
+            string.Join("", pixels.Select(_ => _.BackColor == penColor ? "1" : "0"));
             
        private Label Pixel(Point point) {
            var l = new Label {
                Size=new Size(pixelSize,pixelSize),
                Location=point,
+               BorderStyle=BorderStyle.FixedSingle,
                BackColor = Color.White
            };
            l.MouseMove += delegate(object sender, MouseEventArgs args) {
@@ -50,10 +50,7 @@ namespace BiTZ
        }
 
        
-        private void DrawingBoard_MouseDown(object sender, MouseEventArgs e)
-       {
-           MessageBox.Show("Lent");
-       }
+        
 
     }
 }

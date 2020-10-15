@@ -12,12 +12,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
+using System.Numerics;
 
 namespace BiTZ
-{
+{        //32 bájt lehet
     public partial class Form1 : Form {
         static Random rnd = new Random();
-        //32 bájt lehet
+        private DrawingBoard board = null;
+
         public Form1(){
             InitializeComponent();
         }
@@ -44,20 +46,15 @@ namespace BiTZ
             return bitmap;
         }
         */
-        private DrawingBoard board = null;
         private void test_Click(object sender, EventArgs e)
         {
-            string c = string.Join("",
-                Enumerable.Range(0, 256).Select(_=> rnd.Next(2)));
-            //            board.BitsToDraw(c);   
-            var t = c.Select((_, i) => _ + "  " + i);
-            MessageBox.Show(string.Join("\r\n", t));
-            MessageBox.Show(board.DrawToBits());
+            string c = string.Join("",Enumerable.Range(0, 256).Select(_=> rnd.Next(2)));
+
+            board.BitsToDraw(c);
         }
         private void Form1_Load(object sender, EventArgs e){
-           board= new DrawingBoard(10,16);
+           board= new DrawingBoard(4,16);
             panel1.Controls.Add(board);
-            
         }
        
     }
