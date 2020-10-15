@@ -9,3 +9,13 @@ D:\Code\GitHub\BitSorozat\BiTZ\obj\Debug\BiTZ.exe
 D:\Code\GitHub\BitSorozat\BiTZ\obj\Debug\BiTZ.pdb
 D:\Code\GitHub\BitSorozat\BiTZ\obj\Debug\BiTZ.Form1.resources
 D:\Code\GitHub\BitSorozat\BiTZ\obj\Debug\BiTZ.DrawingBoard.resources
+D:\Code\GitHub\BitSorozat\BiTZ\bin\Debug\EntityFramework.dll
+D:\Code\GitHub\BitSorozat\BiTZ\bin\Debug\EntityFramework.SqlServer.dll
+D:\Code\GitHub\BitSorozat\BiTZ\bin\Debug\System.Data.SQLite.dll
+D:\Code\GitHub\BitSorozat\BiTZ\bin\Debug\System.Data.SQLite.EF6.dll
+D:\Code\GitHub\BitSorozat\BiTZ\bin\Debug\System.Data.SQLite.Linq.dll
+D:\Code\GitHub\BitSorozat\BiTZ\bin\Debug\EntityFramework.xml
+D:\Code\GitHub\BitSorozat\BiTZ\bin\Debug\EntityFramework.SqlServer.xml
+D:\Code\GitHub\BitSorozat\BiTZ\bin\Debug\System.Data.SQLite.xml
+D:\Code\GitHub\BitSorozat\BiTZ\bin\Debug\System.Data.SQLite.dll.config
+D:\Code\GitHub\BitSorozat\BiTZ\obj\Debug\BiTZ.csproj.CopyComplete

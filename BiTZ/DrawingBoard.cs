@@ -12,7 +12,6 @@ namespace BiTZ
         private int pixelDensity;
         private List<Label> pixels=new List<Label>();
         public  Color penColor=Color.Red;
-        
         public DrawingBoard(int ps,int pd) {
             InitializeComponent();
             pixelSize = ps;
@@ -23,7 +22,6 @@ namespace BiTZ
                     pixels.Add(Pixel(new Point(j*pixelSize,i*pixelSize)));
             Controls.AddRange(pixels.ToArray());
         }
-
 
         public void BitsToDraw(string bs)
         {
@@ -39,10 +37,17 @@ namespace BiTZ
            var l = new Label {
                Size=new Size(pixelSize,pixelSize),
                Location=point,
-               BorderStyle=BorderStyle.FixedSingle,
+          //     BorderStyle=BorderStyle.FixedSingle,
                BackColor = Color.White
            };
-           l.MouseMove += delegate(object sender, MouseEventArgs args) {
+            l.Paint += delegate (object sender, PaintEventArgs e) {
+                ControlPaint.DrawBorder(e.Graphics, ((Label)sender).ClientRectangle,
+                    Color.Black, 0, ButtonBorderStyle.Solid, // left
+                    Color.Black, 0, ButtonBorderStyle.Solid, // top
+                    Color.Black, 1, ButtonBorderStyle.Solid, // right
+                    Color.Black, 1, ButtonBorderStyle.Solid);// bottom
+            };
+            l.MouseMove += delegate(object sender, MouseEventArgs args) {
                    ((Label) sender).BackColor = penColor;
            };
            return l;

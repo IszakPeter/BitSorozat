@@ -53,7 +53,7 @@ namespace BiTZ
             board.BitsToDraw(c);
         }
         private void Form1_Load(object sender, EventArgs e){
-           board= new DrawingBoard(4,16);
+           board= new DrawingBoard(10,16);
             panel1.Controls.Add(board);
         }
        
