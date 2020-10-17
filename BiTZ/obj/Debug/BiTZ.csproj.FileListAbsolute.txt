@@ -19,3 +19,5 @@ D:\Code\GitHub\BitSorozat\BiTZ\bin\Debug\EntityFramework.SqlServer.xml
 D:\Code\GitHub\BitSorozat\BiTZ\bin\Debug\System.Data.SQLite.xml
 D:\Code\GitHub\BitSorozat\BiTZ\bin\Debug\System.Data.SQLite.dll.config
 D:\Code\GitHub\BitSorozat\BiTZ\obj\Debug\BiTZ.csproj.CopyComplete
+D:\Code\GitHub\BitSorozat\BiTZ\obj\Debug\BiTZ.Kiiro.resources
+D:\Code\GitHub\BitSorozat\BiTZ\obj\Debug\BiTZ.PictureShorting.resources

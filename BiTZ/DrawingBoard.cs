@@ -12,11 +12,12 @@ namespace BiTZ
         private int pixelDensity;
         private List<Label> pixels=new List<Label>();
         public  Color penColor=Color.Red;
+        public bool canDraw = false;
         public DrawingBoard(int ps,int pd) {
             InitializeComponent();
-            pixelSize = ps;
-            pixelDensity = pd;
-            Size=new Size(pixelDensity*pixelSize,pixelDensity*pixelSize);
+            (pixelSize, pixelDensity) = (ps, pd);
+            this.Size = new Size(pixelDensity * pixelSize, pixelDensity * pixelSize);
+            this.BorderStyle = BorderStyle.FixedSingle;
             for (int i = 0; i < pixelDensity; i++)
                 for (int j = 0; j < pixelDensity; j++)
                     pixels.Add(Pixel(new Point(j*pixelSize,i*pixelSize)));
@@ -25,19 +26,18 @@ namespace BiTZ
 
         public void BitsToDraw(string bs)
         {
-           bs= bs.PadRight(pixelDensity * pixelDensity,'0');
+          // bs= bs.PadRight(pixelDensity * pixelDensity,'0');
                 for (int i = 0; i < bs.Length; i++)
                     pixels[i].BackColor = bs[i] == '1' ? penColor : Color.White;
         }
 
-       public string DrawToBits() =>
+        public string DrawToBits() =>
             string.Join("", pixels.Select(_ => _.BackColor == penColor ? "1" : "0"));
             
-       private Label Pixel(Point point) {
+        private Label Pixel(Point point) {
            var l = new Label {
                Size=new Size(pixelSize,pixelSize),
                Location=point,
-          //     BorderStyle=BorderStyle.FixedSingle,
                BackColor = Color.White
            };
             l.Paint += delegate (object sender, PaintEventArgs e) {
@@ -48,14 +48,15 @@ namespace BiTZ
                     Color.Black, 1, ButtonBorderStyle.Solid);// bottom
             };
             l.MouseMove += delegate(object sender, MouseEventArgs args) {
-                   ((Label) sender).BackColor = penColor;
+                if(canDraw) 
+                    ((Label) sender).BackColor = penColor;
            };
-           return l;
-           
-       }
+           return l;          
+        }
 
-       
-        
+        private void DrawingBoard_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

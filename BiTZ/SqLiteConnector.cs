@@ -6,8 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BiTZ
-{
+namespace BiTZ{
     class SqLiteConnector {
         SQLiteConnection connection;
         
@@ -20,7 +19,10 @@ namespace BiTZ
             var cmd = new SQLiteCommand(sql, connection);
             var result = cmd.ExecuteReader();
             while (result.Read())
-                l.Add(string.Join(" ",result));
+            {
+                l.Add(string.Join(" ", result));
+                System.Windows.Forms.MessageBox.Show("" + result[0]);
+            }
             result.Close();
             return l;
         }
@@ -31,10 +33,8 @@ namespace BiTZ
             adapter.Fill(table);
             return table;
         }
-        ~SqLiteConnector()
-        {
-            connection.Close();
-        }
+       public void Disconect()=>connection.Close();
+       
     }
 
 }

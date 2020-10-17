@@ -1,13 +1,11 @@
-﻿using System.ComponentModel;
-
-namespace BiTZ
+﻿namespace BiTZ
 {
-    partial class DrawingBoard
+    partial class SortingBoard
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private IContainer components = null;
+        private System.ComponentModel.IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -19,7 +17,6 @@ namespace BiTZ
             {
                 components.Dispose();
             }
-
             base.Dispose(disposing);
         }
 
@@ -31,16 +28,8 @@ namespace BiTZ
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // DrawingBoard
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "DrawingBoard";
-            this.Load += new System.EventHandler(this.DrawingBoard_Load);
-            this.ResumeLayout(false);
-
         }
 
         #endregion
