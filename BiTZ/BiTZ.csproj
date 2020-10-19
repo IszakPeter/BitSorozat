@@ -68,6 +68,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Colums.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Colums.Designer.cs">
+      <DependentUpon>Colums.cs</DependentUpon>
+    </Compile>
     <Compile Include="DrawingBoard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -101,6 +107,9 @@
       <DependentUpon>SortingBoard.cs</DependentUpon>
     </Compile>
     <Compile Include="SqLiteConnector.cs" />
+    <EmbeddedResource Include="Colums.resx">
+      <DependentUpon>Colums.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DrawingBoard.resx">
       <DependentUpon>DrawingBoard.cs</DependentUpon>
     </EmbeddedResource>

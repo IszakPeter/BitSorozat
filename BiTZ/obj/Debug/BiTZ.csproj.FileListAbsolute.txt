@@ -21,3 +21,4 @@ D:\Code\GitHub\BitSorozat\BiTZ\bin\Debug\System.Data.SQLite.dll.config
 D:\Code\GitHub\BitSorozat\BiTZ\obj\Debug\BiTZ.csproj.CopyComplete
 D:\Code\GitHub\BitSorozat\BiTZ\obj\Debug\BiTZ.Kiiro.resources
 D:\Code\GitHub\BitSorozat\BiTZ\obj\Debug\BiTZ.PictureShorting.resources
+D:\Code\GitHub\BitSorozat\BiTZ\obj\Debug\BiTZ.Colums.resources
