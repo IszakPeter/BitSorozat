@@ -74,7 +74,6 @@ namespace BiTZ
                     }
                    bubbleSort(arr, n - 1);
             }
-      //      MessageBox.Show("kész");
         }
 
 

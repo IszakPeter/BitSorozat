@@ -53,6 +53,8 @@
             this.tabel.ReadOnly = true;
             this.tabel.Size = new System.Drawing.Size(782, 420);
             this.tabel.TabIndex = 5;
+            this.tabel.SelectionChanged += new System.EventHandler(this.Kiemel);
+            this.tabel.Click += new System.EventHandler(this.tabel_Click);
             // 
             // Form1
             // 
