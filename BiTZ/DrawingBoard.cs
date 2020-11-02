@@ -13,6 +13,7 @@ namespace BiTZ
         private List<Label> pixels=new List<Label>();
         public  Color penColor=Color.Red;
         public bool canDraw = false;
+        int bs_count = 0;
         public DrawingBoard(int ps,int pd) {
             InitializeComponent();
             (pixelSize, pixelDensity) = (ps, pd);
@@ -24,9 +25,16 @@ namespace BiTZ
             Controls.AddRange(pixels.ToArray());
         }
 
+        public void Clear()
+        {
+            for (int i = 0; i < bs_count; i++)
+                pixels[i].BackColor = Color.White;
+        }
+
         public void BitsToDraw(string bs)
         {
-          // bs= bs.PadRight(pixelDensity * pixelDensity,'0');
+            // bs= bs.PadRight(pixelDensity * pixelDensity,'0');
+            bs_count = bs.Length;
                 for (int i = 0; i < bs.Length; i++)
                     pixels[i].BackColor = bs[i] == '1' ? penColor : Color.White;
         }

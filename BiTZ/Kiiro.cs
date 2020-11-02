@@ -81,10 +81,7 @@ namespace BiTZ {
                 data = board.DrawToBits();
             }
 
-
-
             //var sql = "INSERT INTO Bitek ('data') VALUES('"+data+"');";  {Neked Jordánom}
-
 
             var sql = "UPDATE Bitek SET data='" + data + "' WHERE id=" + ID;
             connector = new SqLiteConnector("database.db");
@@ -109,5 +106,36 @@ namespace BiTZ {
 
             Application.Restart();
         }
+
+        private void intd_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if(intd.Text.Length == 0)
+                {
+                    intd.Text = "0";
+                }
+                else
+                {
+                    board.Clear();
+                    var changedBit = BytesToBits(BigInteger.Parse(intd.Text).ToByteArray());
+                    var changedBytes = BitsToBytes(changedBit);
+                    stringd.Text = Encoding.UTF8.GetString(changedBytes);
+                    board.BitsToDraw(changedBit);
+                }
+            }
+            catch { }
+        }
+
+        private void stringd_TextChanged(object sender, EventArgs e)
+        {
+            board.Clear();
+            var changedBit = StringToBits(stringd.Text);
+            var changedBytes = BitsToBytes(changedBit);
+            intd.Text = new BigInteger(changedBytes) + "";
+            board.BitsToDraw(changedBit);
+        }
+
+        //rajzolásból cáltoztatás helye**
     }
 }
