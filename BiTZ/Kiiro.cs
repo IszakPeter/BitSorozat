@@ -15,12 +15,17 @@ namespace BiTZ {
         static string[] words = "szó;Eathen;nagybetű;Kisbetű,Peti;Jordán;Gút;Tankcsapda;retek;mogyoró;sok;fekete;fehér;pina;obcén szavak;bicska;ló;kutya;citrom;Python;hesteg;Neoton Familia;zene;turú;vaj;sajt;pudding;igen;nem;talán;fegyver;pirkadat;est;hajnal;priusz;rendőr;pandúr;szemüveg;nő;szeretet;magány;pornhub;Piper Perri;Lana Rhodhes;Lena Paul;Eva Elif;LittleReislin;LittleSpoonz;hiányszakma;informatika".Split(';');
         static Random rnd = new Random();
         static string getRandomWord() => words[rnd.Next(words.Length)];
+        SqLiteConnector connector = null;
         #region varibels
         string _bits;
         DrawingBoard board = null;
         string eStringd;
         string eIntd;
+        string eBoard;
         int ID;
+        string data;
+        Color yellow = Color.Yellow;
+        Color basic;
         #endregion
 
         string StringToBits(string s) => string.Join("", Encoding.UTF8.GetBytes(s).Select(_ => Convert.ToString(_, 2).PadLeft(8, '0')));
@@ -48,7 +53,11 @@ namespace BiTZ {
             panel1.Controls.Add(board);
         }
         private void Kiiro_Load(object sender, EventArgs e) {
-            var bytes = BitsToBytes(_bits); 
+
+            var bytes = BitsToBytes(_bits);
+            basic = button2.BackColor;
+            stringd.Enabled = false;
+            intd.Enabled = false;
 
             stringd.Text = Encoding.UTF8.GetString(bytes);    // byteból szöveget 
             eStringd = stringd.Text;
@@ -56,11 +65,49 @@ namespace BiTZ {
             intd.Text =new BigInteger(bytes)+"";
             eIntd = intd.Text;
             board.BitsToDraw(_bits);
+            eBoard = _bits;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if(stringd.Text != eStringd){
+                data = StringToBits(stringd.Text);
+            }
+            else if(intd.Text != eIntd)
+            {
+                data = BytesToBits(BigInteger.Parse(intd.Text).ToByteArray());
+            }
+            else if(board.DrawToBits() != eBoard){
+                data = board.DrawToBits();
+            }
 
+
+
+            //var sql = "INSERT INTO Bitek ('data') VALUES('"+data+"');";  {Neked Jordánom}
+
+
+            var sql = "UPDATE Bitek SET data='" + data + "' WHERE id=" + ID;
+            connector = new SqLiteConnector("database.db");
+            connector.Query(sql);
+
+            Application.Restart();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            stringd.Enabled = !stringd.Enabled;
+            intd.Enabled = !intd.Enabled;
+            board.canDraw = !board.canDraw;
+            button2.BackColor = button2.BackColor == basic ? yellow : basic;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var sql = "DELETE FROM Bitek WHERE id=" + ID;
+            connector = new SqLiteConnector("database.db");
+            connector.Query(sql);
+
+            Application.Restart();
         }
     }
 }

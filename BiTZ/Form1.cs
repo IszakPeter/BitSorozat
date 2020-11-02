@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.IO;
+using System.Data.Entity.Core.Objects;
 
 namespace BiTZ
 {        //32 bájt lehet
@@ -21,11 +22,12 @@ namespace BiTZ
 
         }
         private void test_Click(object sender, EventArgs e) {
+            new Kiiro(0,RandomBItekWe(256)).Show();
         }
         private void Form1_Load(object sender, EventArgs e){
             if (!File.Exists("database.db")){
                 File.Create("database.db").Close();
-                var sql = @"CREATE TABLE 'Bitesk'( 'id' INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,'data' TEXT NULL);";
+                var sql = @"CREATE TABLE 'Bitek'( 'id' INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,'data' TEXT NULL);";
                 connector = new SqLiteConnector("database.db");
                 connector.Query(sql);
             }
@@ -63,5 +65,6 @@ namespace BiTZ
             }
 
         }
+        
     }
 }
