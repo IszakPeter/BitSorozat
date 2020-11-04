@@ -109,7 +109,6 @@ namespace BiTZ
             this.intd.Name = "intd";
             this.intd.Size = new System.Drawing.Size(666, 37);
             this.intd.TabIndex = 5;
-            this.intd.TextChanged += new System.EventHandler(this.intd_TextChanged);
             // 
             // stringd
             // 
@@ -121,7 +120,6 @@ namespace BiTZ
             this.stringd.Name = "stringd";
             this.stringd.Size = new System.Drawing.Size(666, 37);
             this.stringd.TabIndex = 3;
-            this.stringd.TextChanged += new System.EventHandler(this.stringd_TextChanged);
             // 
             // panel1
             // 

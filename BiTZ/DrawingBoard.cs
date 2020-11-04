@@ -35,6 +35,7 @@ namespace BiTZ
         {
             // bs= bs.PadRight(pixelDensity * pixelDensity,'0');
             bs_count = bs.Length;
+            MessageBox.Show(bs.Length+" draw");
                 for (int i = 0; i < bs.Length; i++)
                     pixels[i].BackColor = bs[i] == '1' ? penColor : Color.White;
         }

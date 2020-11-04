@@ -50,6 +50,7 @@ namespace BiTZ {
             ID = id;
             _bits = bits;
             board = new DrawingBoard(10, 16);
+         //   MessageBox.Show(bits.Length+" kiiro constr");
             panel1.Controls.Add(board);
         }
         private void Kiiro_Load(object sender, EventArgs e) {
@@ -68,6 +69,7 @@ namespace BiTZ {
             eBoard = _bits;
         }
 
+        
         private void button1_Click(object sender, EventArgs e)
         {
             if(stringd.Text != eStringd){
@@ -106,36 +108,5 @@ namespace BiTZ {
 
             Application.Restart();
         }
-
-        private void intd_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if(intd.Text.Length == 0)
-                {
-                    intd.Text = "0";
-                }
-                else
-                {
-                    board.Clear();
-                    var changedBit = BytesToBits(BigInteger.Parse(intd.Text).ToByteArray());
-                    var changedBytes = BitsToBytes(changedBit);
-                    stringd.Text = Encoding.UTF8.GetString(changedBytes);
-                    board.BitsToDraw(changedBit);
-                }
-            }
-            catch { }
-        }
-
-        private void stringd_TextChanged(object sender, EventArgs e)
-        {
-            board.Clear();
-            var changedBit = StringToBits(stringd.Text);
-            var changedBytes = BitsToBytes(changedBit);
-            intd.Text = new BigInteger(changedBytes) + "";
-            board.BitsToDraw(changedBit);
-        }
-
-        //rajzolásból cáltoztatás helye**
     }
 }
