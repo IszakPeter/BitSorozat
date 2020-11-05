@@ -29,12 +29,6 @@ namespace BiTZ
             var c = RandomBItekWt(256);
             MessageBox.Show(c.Length+"");
             new Kiiro(0,c).Show();
-            /* var sql = "INSERT INTO Bitek ('data') VALUES('" + data + "')";
-             connector = new SqLiteConnector("database.db");
-             connector.Query(sql);
-
-             Application.Restart();
-         */
         }
         private void Form1_Load(object sender, EventArgs e){
             if (!File.Exists("database.db")){
@@ -80,11 +74,8 @@ namespace BiTZ
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var sql = "INSERT INTO Bitek ('data') VALUES('" + data + "')";
-            connector = new SqLiteConnector("database.db");
-            connector.Query(sql);
-
-            Application.Restart();
+            var c = "";
+            new Beiro(0,c).Show();
         }
     }
 }

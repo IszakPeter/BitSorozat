@@ -144,6 +144,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Beiro";
             this.Text = "Beiro";
+            this.Load += new System.EventHandler(this.Beiro_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
